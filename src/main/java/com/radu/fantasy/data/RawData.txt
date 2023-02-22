@@ -1,0 +1,30 @@
+Driver: Lewis Hamilton, 23.6
+Driver: George Russell, 20.1
+Driver: Charles Leclerc, 24.2
+Driver: Carlos Sainz, 22.5
+Driver: Max Verstappen, 30.4
+Driver: Sergio Perez, 24.7
+Driver: Lando Norris, 17.8
+Driver: Oscar Piastri, 9.1
+Driver: Esteban Ocon, 12.3
+Driver: Pierre Gasly, 14.5
+Driver: Fernando Alonso, 16.5
+Driver: Lance Stroll, 12.0
+Driver: Yuki Tsunoda, 8.5
+Driver: Nick De Vries, 6.7
+Driver: Valtteri Bottas, 12.3
+Driver: Guanyou Zhou, 8.7
+Driver: Nico Hulkenberg, 8.6
+Driver: Kevin Magnussen, 9.7
+Driver: Alexander Albon, 8.9
+Driver: Logan Sargeant, 6.2
+Red Bull, 30.4
+Ferrari, 28.6
+Mercedes, 25.0
+McLaren, 19.5
+Aston Martin, 16.7
+Alpine, 14.9
+Alpha Tauri, 12.3
+Alfa Romeo, 11.2
+Haas, 10.4
+Williams, 8.9
