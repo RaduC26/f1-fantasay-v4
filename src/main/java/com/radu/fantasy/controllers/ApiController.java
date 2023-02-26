@@ -4,16 +4,19 @@ import com.radu.fantasy.calculations.Calculator;
 import com.radu.fantasy.data.DataStore;
 import com.radu.fantasy.data.Entry;
 import jakarta.annotation.PostConstruct;
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
 
 @RestController
-public class SimpleController {
+public class ApiController {
     @Autowired
     DataStore dataStore;
 
@@ -28,20 +31,15 @@ public class SimpleController {
     @Value("${spring.application.name}")
     String appName;
 
-    @GetMapping("/")
-    public String homePage(Model model) {
-        DataStore dataStore = new DataStore();
-        model.addAttribute("appName", appName);
-        return "home";
-    }
 
-    @GetMapping("/entries")
+
+    @GetMapping("/api/entries")
     public ResponseEntity<String> getEntries() {
         return ResponseEntity.ok()
                 .body(printData(dataStore.getEntries()));
     }
 
-    @GetMapping("/driversRanked")
+    @GetMapping("/api/driversRanked")
     public ResponseEntity<String> getRankedDrivers() {
         List<Entry> driversSorted = dataStore.getDrivers();
         driversSorted.sort(Comparator.comparing(Entry::getPricePerPoint));
@@ -49,22 +47,33 @@ public class SimpleController {
                 .body(printData(driversSorted));
     }
 
-    @GetMapping("/bestTeam")
-    public ResponseEntity<String> getBestTeam() {
+    @GetMapping("/api/bestTeam")
+    @Cacheable("myCache")
+    public ResponseEntity<List<Pair<List<Entry>, Double>>> getBestTeam() {
         return ResponseEntity.ok()
-                .body(printData(calculator.calculateBestTeam(dataStore, 100.0)));
+                .body(calculator.calculateBestTeam(dataStore, 100.0));
     }
 
-    @PostMapping("/bestTeamPartial")
-    public ResponseEntity<String> getBestPartialTeam(@RequestBody HashMap<String, Object> requestBody) {
-        List<Entry> drivers = new ArrayList<>();
-
-        List<String> requestedDrivers = (List<String>) requestBody.get("drivers");
-        requestedDrivers.forEach(requestedDriver -> drivers.add(dataStore.getEntry(requestedDriver)));
-
-        return ResponseEntity.ok()
-                .body(printData(calculator.calculateBestTeam(dataStore, 100.0, drivers)));
+    @GetMapping("/api/numberOfCombinations")
+    public ResponseEntity<Integer> getNumberOfCombinations() {
+        return ResponseEntity.ok().body(calculator.getNoOfCombinations());
     }
+
+    @GetMapping("/api/executionTime")
+    public ResponseEntity<Double> getExecutionTime() {
+        return ResponseEntity.ok().body(calculator.getExecutionTime());
+    }
+
+//    @PostMapping("/api/bestTeamPartial")
+//    public ResponseEntity<List<Entry>> getBestPartialTeam(@RequestBody HashMap<String, Object> requestBody) {
+//        List<Entry> drivers = new ArrayList<>();
+//
+//        List<String> requestedDrivers = (List<String>) requestBody.get("entries");
+//        requestedDrivers.forEach(requestedDriver -> drivers.add(dataStore.getEntry(requestedDriver)));
+//
+//        return ResponseEntity.ok()
+//                .body(calculator.calculateBestTeam(dataStore, 100.0, drivers));
+//    }
 
     public String printData(List<Entry> data) {
         StringBuilder result = new StringBuilder();

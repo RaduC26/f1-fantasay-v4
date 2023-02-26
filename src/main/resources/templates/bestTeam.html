@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"></head>
+<body>
+    <button onclick="location.href='/'">Home</button>
+    <div style="display: flex;">
+        <table th:each="table: ${tableOfEntries}" style="border-collapse: collapse; width: 25%; border: 1px solid #ddd; font-family: Arial, sans-serif; margin-right: 20px;">
+            <thead>
+            <tr style="background-color: #4CAF50; color: white;">
+                <th style="padding: 12px; text-align: left;">Name</th>
+                <th style="padding: 12px; text-align: left;">Price</th>
+                <th style="padding: 12px; text-align: left;">Points</th>
+                <th style="padding: 12px; text-align: left;">Price per point</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="entry: ${table.left}">
+                <td style="padding: 12px;" th:text="${entry.name}"></td>
+                <td style="padding: 12px;" th:text="${entry.price}"></td>
+                <td style="padding: 12px;" th:text="${entry.points}"></td>
+                <td style="padding: 12px;" th:text="${#numbers.formatDecimal(entry.pricePerPoint, 1, 2)}"></td>
+            </tr>
+            <tr style="border-top: 1px solid black;">
+                <td style="padding: 12px;">Total</td>
+                <td style="padding: 12px;" th:text="${#numbers.formatDecimal(table.right, 1, 2)}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <p th:text="'Compiled ' +  ${numberOfCombinations} + ' combinations in ' + ${executionTime} + ' seconds'"></p>
+<!--        <p th:text="${numberOfCombinations}"></p>-->
+<!--        <p th:text="${executionTime}"></p>-->
+    </div>
+</body>
+</html>

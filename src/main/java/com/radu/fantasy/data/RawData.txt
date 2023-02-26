@@ -1,30 +1,30 @@
-Driver: Lewis Hamilton, 23.6
-Driver: George Russell, 20.1
-Driver: Charles Leclerc, 24.2
-Driver: Carlos Sainz, 22.5
-Driver: Max Verstappen, 30.4
-Driver: Sergio Perez, 24.7
-Driver: Lando Norris, 17.8
-Driver: Oscar Piastri, 9.1
-Driver: Esteban Ocon, 12.3
-Driver: Pierre Gasly, 14.5
-Driver: Fernando Alonso, 16.5
-Driver: Lance Stroll, 12.0
-Driver: Yuki Tsunoda, 8.5
-Driver: Nick De Vries, 6.7
-Driver: Valtteri Bottas, 12.3
-Driver: Guanyou Zhou, 8.7
-Driver: Nico Hulkenberg, 8.6
-Driver: Kevin Magnussen, 9.7
-Driver: Alexander Albon, 8.9
-Driver: Logan Sargeant, 6.2
-Red Bull, 30.4
-Ferrari, 28.6
-Mercedes, 25.0
-McLaren, 19.5
-Aston Martin, 16.7
-Alpine, 14.9
-Alpha Tauri, 12.3
-Alfa Romeo, 11.2
-Haas, 10.4
-Williams, 8.9
+Driver: Lewis Hamilton, 23.6, 100
+Driver: George Russell, 20.1, 78
+Driver: Charles Leclerc, 24.2, 150
+Driver: Carlos Sainz, 22.5, 123
+Driver: Max Verstappen, 30.4, 203
+Driver: Sergio Perez, 24.7, 154
+Driver: Lando Norris, 17.8, 56
+Driver: Oscar Piastri, 9.1, 45
+Driver: Esteban Ocon, 12.3, 101
+Driver: Pierre Gasly, 14.5, 107
+Driver: Fernando Alonso, 16.5, 178
+Driver: Lance Stroll, 12.0, 98
+Driver: Yuki Tsunoda, 8.5, 56
+Driver: Nick De Vries, 6.7, 45
+Driver: Valtteri Bottas, 12.3, 77
+Driver: Guanyou Zhou, 8.7, 34
+Driver: Nico Hulkenberg, 8.6, 6
+Driver: Kevin Magnussen, 9.7, 23
+Driver: Alexander Albon, 8.9, 7
+Driver: Logan Sargeant, 6.2, 2
+Red Bull, 30.4, 357
+Ferrari, 28.6, 273
+Mercedes, 25.0, 178
+McLaren, 19.5, 101
+Aston Martin, 16.7, 276
+Alpine, 14.9, 208
+Alpha Tauri, 12.3, 101
+Alfa Romeo, 11.2, 111
+Haas, 10.4, 29
+Williams, 8.9, 9

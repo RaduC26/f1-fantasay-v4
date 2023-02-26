@@ -8,8 +8,7 @@ import java.util.List;
 
 @Service
 public class DataStore {
-    private List<Entry> drivers = new ArrayList<>();
-    private List<Entry> teams = new ArrayList<>();
+    private final List<Entry> entries = new ArrayList<>();
 
     public void readData() {
         try {
@@ -19,11 +18,12 @@ public class DataStore {
             while (line != null) {
                 String[] components = line.split(",");
                 String name = components[0];
-                Double price = Double.valueOf(components[1]);
+                double price = Double.parseDouble(components[1]);
+                double points = Double.parseDouble(components[2]);
                 if (line.contains("Driver")) {
-                    this.drivers.add(new Entry(name.split(": ")[1], price));
+                    this.entries.add(new Entry(name.split(": ")[1], price, points,"driver"));
                 } else {
-                    this.teams.add(new Entry(name, price));
+                    this.entries.add(new Entry(name, price, points,"team"));
                 }
 
                 // read next line
@@ -35,31 +35,36 @@ public class DataStore {
             e.printStackTrace();
         }
     }
-
-    public List<Entry> getDrivers() {
-        return drivers;
-    }
-    public List<Entry> getTeams() {
-        return teams;
-    }
     public List<Entry> getEntries() {
-        List<Entry> entries = new ArrayList<>(drivers.size() + teams.size());
-        entries.addAll(drivers);
-        entries.addAll(teams);
         return entries;
     }
 
     public Entry getEntry(String name) {
-        for(Entry entry: drivers) {
-            if (entry.getName().contains(name)) {
-                return entry;
-            }
-        }
-        for(Entry entry: teams) {
+        for(Entry entry: entries) {
             if (entry.getName().contains(name)) {
                 return entry;
             }
         }
         return null;
+    }
+
+    public List<Entry> getDrivers() {
+        List<Entry> drivers = new ArrayList<>();
+        for(Entry entry: entries) {
+            if (entry.getType().equals("driver")) {
+                drivers.add(entry);
+            }
+        }
+        return drivers;
+    }
+
+    public List<Entry> getTeams() {
+        List<Entry> teams = new ArrayList<>();
+        for(Entry entry: entries) {
+            if (entry.getType().equals("team")) {
+                teams.add(entry);
+            }
+        }
+        return teams;
     }
 }

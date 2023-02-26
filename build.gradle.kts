@@ -14,6 +14,10 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+	implementation("org.springframework.boot:spring-boot-starter-cache")
+	implementation("com.github.ben-manes.caffeine:caffeine")
+	implementation("org.apache.commons:commons-lang3")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
